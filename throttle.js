@@ -13,5 +13,4 @@ function throttle(fn, delay){
 const throttled = throttle(_=> console.log('hi'),1000)
 throttled()
 throttled()
-throttled()
 setTimeout(_ => throttled(),2000)
