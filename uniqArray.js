@@ -15,9 +15,21 @@ Array.prototype.uniq = function () {
   const uniqA = []
   for (let item of this) {
     if(uniqA[typeof(item)+item] === undefined || Object.prototype.toString.call(item)==='[object Object]'){
-      uniqA[typeof(item)+item] = item
+      uniqA[typeof(item)+item] = 1
       uniqA.push(item)
     }
   }
   return uniqA
+}
+
+Array.prototype.uniqu2 = function () {
+  const map = new Map()
+  const newArr = new Array()
+  this.forEach((item) => {
+      if (!map.has(typeof(item)+item) || Object.prototype.toString.call(item)==='[object Object]') {
+          map.set(typeof(item)+item, 1)
+          newArr.push(item)
+      }
+  })
+  return newArr
 }
