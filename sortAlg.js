@@ -1,4 +1,4 @@
-//冒泡
+//冒泡 n-1 n-2 n-3   n^2- n(n-1)/2
 function bubbleSort(arr) {
 	for (let j=0; j<arr.length; j++) {
 		for (let i=0; i<arr.length-j-1; i++) {
@@ -11,7 +11,8 @@ function bubbleSort(arr) {
 	}
 	return arr
 }
-//选择
+
+//选择 n n-1 n-2 n - 3
 function selSort(arr) {
 	let min = 0
 	for (let j=0; j<arr.length; j++) {
@@ -83,23 +84,49 @@ function qiuckSort2(arr) {
 	return [...qiuckSort2(left), arr[0], ...qiuckSort2(right)]
 }
 
+// merge nlogn
+function mergeSort(array) {
+  const half = array.length / 2
+  if(array.length < 2){
+    return array
+  }
+  const left = array.splice(0, half)
+  return merge(mergeSort(left),mergeSort(array))
+}
+ 
+function merge(left, right) {
+  let arr = []
+  // 如果任何一个数组为空，就退出循环
+  while (left.length && right.length) {
+      // 从左右子数组的最小元素中选择较小的元素
+      if (left[0] < right[0]) {
+          arr.push(left.shift()) 
+      } else {
+          arr.push(right.shift())
+      }
+  }
+  // 连接剩余的元素，防止没有把两个数组遍历完整
+  return [ ...arr, ...left, ...right ]
+}
+
 function randArray(len, min, max) {
 	return Array.from({length:len}, v=> Math.floor(Math.random()*(max-min))+min);
 }
-// 性能测试：
-// const L = randArray(100000,0,100000)
+//性能测试：
+const L = randArray(100000,0,100000)
 
-// const measureDoSomethingTime = (fn, l, r) => {
-// 	const testL = [...L]
-// 	console.time('fn()')
-// 	const res = arguments.length > 1 ? fn(testL, l, r) : fn(testL)
-// 	console.timeEnd('fn()')
-// }
+const measureDoSomethingTime = (fn, l, r) => {
+	const testL = [...L]
+	console.time('fn()')
+	const res = arguments.length > 1 ? fn(testL, l, r) : fn(testL)
+	console.timeEnd('fn()')
+}
 
-// measureDoSomethingTime(qiuckSort2)
+measureDoSomethingTime(qiuckSort2)
+measureDoSomethingTime(mergeSort)
 // measureDoSomethingTime(selSort)
 // measureDoSomethingTime(bubbleSort)
-// measureDoSomethingTime(quickSort, 0, 99999)
+measureDoSomethingTime(quickSort, 0, 99999)
 
 module.exports = {
   quickSort,
