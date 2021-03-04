@@ -75,6 +75,15 @@ const test = () => {
         console.log('5')
     })
   })
+  setTimeout(function() {
+    console.log('2');
+    new Promise(function(resolve) {
+        console.log('4');
+        resolve();
+    }).then(function() {
+        console.log('5')
+    })
+  })
   new Promise(function(resolve) {
       console.log('7');
       resolve();

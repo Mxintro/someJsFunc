@@ -23,3 +23,11 @@ function iterate(obj) {
   }
   return ownPro
 }
+
+function iterate(obj) {
+  const result = []
+  Object.keys(obj).forEach( key => {
+      result.push(`${key}: ${obj[key]}`)
+  })
+  return result
+}

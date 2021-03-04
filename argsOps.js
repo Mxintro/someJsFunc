@@ -10,3 +10,8 @@ function  ff() {
   console.log(arguments)
 }
 partialUsingArguments(ff, 3, 4)(5,7,6)
+
+function valueAtBit(num, bit) {
+  const bitStr = num.toString(2)
+  return bitStr.slice(bitStr.length-bit, bitStr.length-bit+1)
+}
