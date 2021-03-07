@@ -7,7 +7,10 @@ function bubbleSort(arr) {
   return arr
 } 
 
+function selectSort(arr) {
 
+}
+
+// [1,10,2,1,4,5,7,4,8]
 a = [8, 2, 5, 6, 77, 0, 1,42, 645, 0, 77]
-
 console.log(bubbleSort(a))
