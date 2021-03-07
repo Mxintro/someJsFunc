@@ -14,4 +14,4 @@ Promise.all(task).then( _ => {
 	setTimeout(() => {
 		console.log(i)
 	}, 1000)
-})
+})m
